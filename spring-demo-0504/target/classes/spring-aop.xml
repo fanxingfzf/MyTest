@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+	   http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+
+    <bean class="com.fzf.advice.AdviceTarget" id="adviceTarget"/>
+    <bean class="com.fzf.advice.BeforeService" id="beforeService"/>
+
+    <aop:config>
+        <!--testAdvice(..)里面的".."运用了正则表达式，匹配所以参数-->
+        <aop:pointcut id="point" expression="execution(* com.fzf.advice.AdviceTarget.testAdvice(..))"/>
+        <!--前置增强-->
+<!--        <aop:advisor advice-ref="beforeService" pointcut-ref="point"/>-->
+    </aop:config>
+</beans>
